@@ -27,6 +27,27 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>co.com.sofka</groupId>
+			<artifactId>domain</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.sofka</groupId>
+			<artifactId>business</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.sofka</groupId>
+			<artifactId>infrastructure</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>co.com.sofka</groupId>
+			<artifactId>application</artifactId>
+			<version>1.5.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
