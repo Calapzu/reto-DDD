@@ -7,7 +7,7 @@ public class ReceptionId extends Identity {
     public ReceptionId() {
     }
 
-    private ReceptionId(String id) {
+    public ReceptionId(String id) {
         super(id);
     }
 

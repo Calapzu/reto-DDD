@@ -30,6 +30,6 @@ public class Discount implements ValueObject<Long> {
 
     @Override
     public Long value() {
-        return null;
+        return value;
     }
 }

@@ -7,7 +7,7 @@ public class CustomerId extends Identity {
     public CustomerId() {
     }
 
-    private CustomerId(String id) {
+    public CustomerId(String id) {
         super(id);
     }
 

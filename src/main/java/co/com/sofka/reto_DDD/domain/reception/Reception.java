@@ -1,6 +1,7 @@
 package co.com.sofka.reto_DDD.domain.reception;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.reto_DDD.domain.genericvalue.Addres;
 import co.com.sofka.reto_DDD.domain.genericvalue.CellPhoneNumber;
 import co.com.sofka.reto_DDD.domain.genericvalue.EmailAddres;
@@ -8,6 +9,7 @@ import co.com.sofka.reto_DDD.domain.genericvalue.Name;
 import co.com.sofka.reto_DDD.domain.reception.event.*;
 import co.com.sofka.reto_DDD.domain.reception.value.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -27,6 +29,12 @@ public class Reception extends AggregateEvent<ReceptionId> {
     private Reception(ReceptionId receptionId){
         super(receptionId);
         subscribe(new ReceptionChange(this));
+    }
+
+    public static Reception from(ReceptionId receptionId, List<DomainEvent> events){
+        var reception = new Reception(receptionId);
+        events.forEach(reception::applyEvent);
+        return reception;
     }
 
     public void addCustomer(CustomerId customerId, Name name, AmountMoney amountMoney){
