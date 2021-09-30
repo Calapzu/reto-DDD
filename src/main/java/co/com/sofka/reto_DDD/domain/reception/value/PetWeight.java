@@ -10,10 +10,10 @@ public class PetWeight implements ValueObject<Float> {
 
     public PetWeight(Float value) {
         this.value = Objects.requireNonNull(value);
-        if (this.value.floatValue()>0){
+        if (this.value >0){
             throw new IllegalArgumentException("La mascota debe tener un peso mayo a 0");
         }
-        if(this.value.floatValue()<50){
+        if(this.value <50){
             throw new IllegalArgumentException("La mascota debe tener un peso menor a 50");
         }
     }

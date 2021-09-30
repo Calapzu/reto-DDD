@@ -10,7 +10,7 @@ public class AmountMoney implements ValueObject<Float> {
 
     public AmountMoney(Float value) {
         this.value = Objects.requireNonNull(value);
-        if (this.value.floatValue()<= 1){
+        if (this.value <= 1){
             throw new IllegalArgumentException("No puedes tener dinero negativo o igual a cero");
         }
     }

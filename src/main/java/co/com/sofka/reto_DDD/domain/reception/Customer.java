@@ -12,8 +12,31 @@ public class Customer extends Entity<CustomerId> {
     private AmountMoney amountMoney;
     private Discount discount;
 
-    public Customer(CustomerId entityId) {
+    public Customer(CustomerId entityId, Name name, AmountMoney amountMoney) {
         super(entityId);
+        this.name = name;
+        this.amountMoney = amountMoney;
     }
 
+    public void addDiscount(Discount discount){
+        this.discount = discount;
+    }
+
+    public void updateCustomerData(CustomerId entityId, Name name, AmountMoney amountMoney){
+        this.entityId = entityId;
+        this.name = name;
+        this.amountMoney = amountMoney;
+    }
+
+    public Name name() {
+        return name;
+    }
+
+    public AmountMoney amountMoney() {
+        return amountMoney;
+    }
+
+    public Discount discount() {
+        return discount;
+    }
 }

@@ -12,7 +12,44 @@ public class Pet extends Entity<PetId> {
     private PetWeight petWeight;
     private Diagnosis diagnosis;
 
-    public Pet(PetId entityId) {
+    public Pet(PetId entityId, Name name, PetBreed petBreed, PetAge petAge, PetWeight petWeight, Diagnosis diagnosis) {
         super(entityId);
+        this.name = name;
+        this.petBreed = petBreed;
+        this.petAge = petAge;
+        this.petWeight = petWeight;
+        this.diagnosis = diagnosis;
+    }
+
+    public void modifyPetData(Name name, PetBreed petBreed, PetAge petAge, PetWeight petWeight){
+        this.name = name;
+        this.petBreed = petBreed;
+        this.petAge = petAge;
+        this.petWeight = petWeight;
+    }
+
+    public void modifyDiagnosis(PetId petId, Diagnosis diagnosis){
+        this.entityId = petId;
+        this.diagnosis = diagnosis;
+    }
+
+    public Name name() {
+        return name;
+    }
+
+    public PetBreed petBreed() {
+        return petBreed;
+    }
+
+    public PetAge petAge() {
+        return petAge;
+    }
+
+    public PetWeight petWeight() {
+        return petWeight;
+    }
+
+    public Diagnosis diagnosis() {
+        return diagnosis;
     }
 }

@@ -10,7 +10,7 @@ public class Discount implements ValueObject<Long> {
 
     public Discount(Long value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value.longValue() < 1){
+        if(this.value < 1){
             throw new IllegalArgumentException("El descuento no puede ser menor o igual a 0");
         }
     }
