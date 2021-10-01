@@ -4,6 +4,8 @@ import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.reto_DDD.domain.genericvalue.*;
 import co.com.sofka.reto_DDD.domain.reception.value.SellerId;
 
+import java.util.Objects;
+
 public class Seller extends Entity<SellerId> {
 
     private Addres addres;
@@ -20,10 +22,10 @@ public class Seller extends Entity<SellerId> {
     }
 
     public void updateSellerData(Addres addres, EmailAddres emailAddres, CellPhoneNumber cellPhoneNumber, Name name){
-        this.addres = addres;
-        this.emailAddres = emailAddres;
-        this.cellPhoneNumber = cellPhoneNumber;
-        this.name = name;
+        this.addres = Objects.requireNonNull(addres);
+        this.emailAddres = Objects.requireNonNull(emailAddres);
+        this.cellPhoneNumber = Objects.requireNonNull(cellPhoneNumber);
+        this.name = Objects.requireNonNull(name);
     }
 
     public Addres addres() {
