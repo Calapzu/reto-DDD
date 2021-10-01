@@ -38,7 +38,7 @@ public class Reception extends AggregateEvent<ReceptionId> {
     }
 
     public void addCustomer(CustomerId customerId, Name name, AmountMoney amountMoney){
-        Objects.requireNonNull(customerId);
+        //Objects.requireNonNull(customerId);
         Objects.requireNonNull(name);
         Objects.requireNonNull(amountMoney);
         appendChange(new CustomerAdded(customerId, name, amountMoney)).apply();

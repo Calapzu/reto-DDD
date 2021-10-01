@@ -11,7 +11,7 @@ public class AddPetUsesCases extends UseCase<RequestCommand<AddPet>, ResponseEve
     @Override
     public void executeUseCase(RequestCommand<AddPet> addPetRequestCommand) {
         var command = addPetRequestCommand.getCommand();
-        var reception = Reception.from(command.getReceptionId(),retrieveEvents(command.getEntityId().value()));
+        var reception = Reception.from(command.getReceptionId(),retrieveEvents(command.getReceptionId().value()));
         reception.addPet(command.getEntityId(), command.getName(), command.getPetBreed(), command.getPetAge(), command.getPetWeight(), command.getDiagnosis());
         emit().onResponse(new ResponseEvents(reception.getUncommittedChanges()));
     }

@@ -13,7 +13,7 @@ public class Name implements ValueObject<String> {
         if (this.value.isBlank()){
             throw new IllegalArgumentException("El nombre no puede estar vacio ");
         }
-        if (this.value.length() <= 4){
+        if (this.value.length() < 3){
             throw new IllegalArgumentException("Debes de tener mayor a 4 caracteres");
         }
         if (this.value.length() >= 100){

@@ -16,7 +16,10 @@ public class ReceptionChange extends EventChange {
         });
 
         apply((CustomerAdded event) -> {
-            reception.customers.add(new Customer(event.getCustomerId(), event.getName(), event.getAmountMoney()));
+            reception.customers.add(
+                    new Customer(event.getCustomerId(),
+                            event.getName(),
+                            event.getAmountMoney()));
         });
 
         apply((UpdatedCustomerData event) -> {

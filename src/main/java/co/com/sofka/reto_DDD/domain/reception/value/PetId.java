@@ -7,7 +7,7 @@ public class PetId extends Identity {
     public PetId() {
     }
 
-    private PetId(String id) {
+    public PetId(String id) {
         super(id);
     }
 
