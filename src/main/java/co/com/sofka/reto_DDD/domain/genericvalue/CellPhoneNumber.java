@@ -13,7 +13,7 @@ public class CellPhoneNumber implements ValueObject<String> {
         if (this.value.isBlank()){
             throw new IllegalArgumentException("El numero de celular no puede estar vacio");
         }
-        if (this.value.length() < 10 || this.value.length() > 10){
+        if (this.value.length() != 10){
             throw new IllegalArgumentException("El numero debe tener 10 digitos");
         }
     }
