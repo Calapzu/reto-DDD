@@ -30,6 +30,6 @@ public class ProductQuantity implements ValueObject<Integer> {
 
     @Override
     public Integer value() {
-        return null;
+        return value;
     }
 }

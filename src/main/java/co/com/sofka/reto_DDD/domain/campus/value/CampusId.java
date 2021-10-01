@@ -7,7 +7,7 @@ public class CampusId extends Identity {
     public CampusId() {
     }
 
-    private CampusId(String id) {
+    public CampusId(String id) {
         super(id);
     }
 

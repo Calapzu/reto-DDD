@@ -17,10 +17,6 @@ public class CampusChange extends EventChange {
             campus.services = new HashSet<>();
         });
 
-        apply((UpdatedCampusData event) -> {
-            campus.updateCampusData(event.getCampusId(), event.getName(), event.getCellPhoneNumber(), event.getAddres());
-        });
-
         apply((AssociatedReception event) -> {
             campus.receptionId = event.getReceptionId();
         });
@@ -51,7 +47,7 @@ public class CampusChange extends EventChange {
 
         apply((UpdatedVeterinaryDoctorData event) -> {
             var veterinaryDoctor = campus.getVeterinaryDoctorForId(event.getVeterinaryDoctorId())
-                    .orElseThrow(()-> new IllegalArgumentException("N existe el medico veterinario con Id "+event.getVeterinaryDoctorId()));
+                    .orElseThrow(()-> new IllegalArgumentException("No existe el medico veterinario con Id "+event.getVeterinaryDoctorId()));
             veterinaryDoctor.UpdateVeterinaryDoctorData(event.getName(), event.getEmailAddres(), event.getAddres(), event.getCellPhoneNumber());
         });
     }

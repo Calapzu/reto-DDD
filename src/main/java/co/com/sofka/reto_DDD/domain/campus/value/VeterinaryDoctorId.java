@@ -7,7 +7,7 @@ public class VeterinaryDoctorId extends Identity {
     public VeterinaryDoctorId() {
     }
 
-    private VeterinaryDoctorId(String id) {
+    public VeterinaryDoctorId(String id) {
         super(id);
     }
 

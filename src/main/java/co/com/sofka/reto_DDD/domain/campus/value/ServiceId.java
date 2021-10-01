@@ -7,7 +7,7 @@ public class ServiceId extends Identity {
     public ServiceId() {
     }
 
-    private ServiceId(String id) {
+    public ServiceId(String id) {
         super(id);
     }
 

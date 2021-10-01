@@ -7,7 +7,7 @@ public class ProductId extends Identity {
     public ProductId() {
     }
 
-    private ProductId(String id) {
+    public ProductId(String id) {
         super(id);
     }
 

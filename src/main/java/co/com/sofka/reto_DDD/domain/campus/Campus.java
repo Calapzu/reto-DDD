@@ -44,13 +44,7 @@ public class Campus extends AggregateEvent<CampusId> {
         return campus;
     }
 
-    public void updateCampusData(CampusId campusId, Name name, CellPhoneNumber cellPhoneNumber, Addres addres){
-        Objects.requireNonNull(campusId);
-        Objects.requireNonNull(name);
-        Objects.requireNonNull(cellPhoneNumber);
-        Objects.requireNonNull(addres);
-        appendChange(new UpdatedCampusData(campusId, name, cellPhoneNumber, addres)).apply();
-    }
+
 
     public void associateReception(ReceptionId receptionId){
         appendChange(new AssociatedReception(receptionId)).apply();

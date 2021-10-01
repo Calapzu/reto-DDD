@@ -25,20 +25,18 @@ import static org.mockito.Mockito.mock;
 
 class AddSellerUsesCasesTest {
 
-    private AddSellerUsesCases addSellerUsesCases;
-
     @Mock
     private DomainEventRepository repository;
 
     @BeforeEach
     public void setup(){
-        addSellerUsesCases = new AddSellerUsesCases();
+        AddSellerUsesCases addSellerUsesCases = new AddSellerUsesCases();
         repository = mock(DomainEventRepository.class);
         addSellerUsesCases.addRepository(repository);
     }
 
     @Test
-    public void createSeller(){
+    void createSeller(){
         //Arrannge
         var command = new AddSeller(
                 ReceptionId.of("123456789"),
