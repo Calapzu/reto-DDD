@@ -1,4 +1,4 @@
-package co.com.sofka.reto_DDD.usecasesreceptiontest;
+package co.com.sofka.reto_DDD.usecases.usecasesreceptiontest;
 
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;

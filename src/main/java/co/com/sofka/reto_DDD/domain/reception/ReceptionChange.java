@@ -51,7 +51,7 @@ public class ReceptionChange extends EventChange {
         apply((ModifiedDiagnosis event) -> {
             var pet = reception.gePetForId(event.getPetId())
                     .orElseThrow(()->new IllegalArgumentException("No existe la mascota con el ID "+event.getPetId()));
-            pet.modifyDiagnosis(event.getPetId(), event.getDiagnosis());
+            pet.modifyDiagnosis( event.getDiagnosis());
         });
 
 

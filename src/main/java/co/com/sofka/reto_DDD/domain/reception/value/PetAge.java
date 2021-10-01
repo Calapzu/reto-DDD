@@ -10,8 +10,8 @@ public class PetAge implements ValueObject<Integer> {
 
     public PetAge(Integer value) {
         this.value = Objects.requireNonNull(value);
-        if (this.value <= 1){
-            throw new IllegalArgumentException("La mascota no puede tener 0 o menos que 0");
+        if (this.value < 1){
+            throw new IllegalArgumentException("La mascota no puede tener una edad igual a 0 o menor que 0");
         }
         if (this.value >= 27){
             throw new IllegalArgumentException("La mascota no puede tener mas de 27 años");

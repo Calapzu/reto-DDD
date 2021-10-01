@@ -28,8 +28,7 @@ public class Pet extends Entity<PetId> {
         this.petWeight = petWeight;
     }
 
-    public void modifyDiagnosis(PetId petId, Diagnosis diagnosis){
-        this.entityId = petId;
+    public void modifyDiagnosis(Diagnosis diagnosis){
         this.diagnosis = diagnosis;
     }
 

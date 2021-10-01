@@ -1,14 +1,14 @@
-package co.com.sofka.reto_DDD.usecasesreceptiontest;
+package co.com.sofka.reto_DDD.usecases.usecasesreceptiontest;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.reto_DDD.domain.genericvalue.Name;
-import co.com.sofka.reto_DDD.domain.reception.command.AddCustomer;
-import co.com.sofka.reto_DDD.domain.reception.command.CreateReception;
+import co.com.sofka.reto_DDD.domain.reception.command.UpdateCustomerData;
 import co.com.sofka.reto_DDD.domain.reception.event.CustomerAdded;
 import co.com.sofka.reto_DDD.domain.reception.event.ReceptionCreated;
+import co.com.sofka.reto_DDD.domain.reception.event.UpdatedCustomerData;
 import co.com.sofka.reto_DDD.domain.reception.value.AmountMoney;
 import co.com.sofka.reto_DDD.domain.reception.value.CustomerId;
 import co.com.sofka.reto_DDD.domain.reception.value.ReceptionId;
@@ -20,35 +20,32 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
-class AddCustomerUsesCasesTest {
+class UpdateCustomerDataUsesCasesTest {
 
-    private AddCustomerUsesCases addCustomerUsesCases;
+    private UpdateCustomerDataUsesCases updateCustomerDataUsesCases;
 
     @Mock
     private DomainEventRepository repository;
 
     @BeforeEach
     public void setup(){
-        addCustomerUsesCases = new AddCustomerUsesCases();
+        updateCustomerDataUsesCases = new UpdateCustomerDataUsesCases();
         repository = mock(DomainEventRepository.class);
-        addCustomerUsesCases.addRepository(repository);
+        updateCustomerDataUsesCases.addRepository(repository);
     }
 
     @Test
-    public void createCustomer(){
+    public void updateCustomerDataUsesCases(){
         //Arrange
-        var command = new AddCustomer(
+        var command = new UpdateCustomerData(
                 ReceptionId.of("123456789"),
                 new CustomerId("123"),
                 new Name("Jhoan"),
-                new AmountMoney(10000.50F)
+                new AmountMoney(500f)
         );
-        var useCase = new AddCustomerUsesCases();
+        var useCase = new UpdateCustomerDataUsesCases();
         Mockito.when(repository.getEventsBy("123456789")).thenReturn(events());
         useCase.addRepository(repository);
 
@@ -60,17 +57,23 @@ class AddCustomerUsesCasesTest {
                 .getDomainEvents();
 
         //assert
-        var eventCustomerAdded = (CustomerAdded) events.get(0);
-        Assertions.assertEquals("Jhoan", eventCustomerAdded.getName().value());
-        Assertions.assertEquals("123", eventCustomerAdded.getCustomerId().value());
-        Assertions.assertEquals(10000.50F, eventCustomerAdded.getAmountMoney().value());
-
+        var eventUpdateCustomerData = (UpdatedCustomerData) events.get(0);
+        Assertions.assertEquals("123", eventUpdateCustomerData.getCustomerId().value());
+        Assertions.assertEquals("Jhoan", eventUpdateCustomerData.getName().value());
+        Assertions.assertEquals(500f, eventUpdateCustomerData.getAmountMoney().value());
     }
 
     private List<DomainEvent> events(){
-        return List.of(new ReceptionCreated(
-                new Name("Veterinaria La Finca")
-        ));
+        return List.of(
+                new ReceptionCreated(
+                        new Name("Veterinaria La Finca")
+                ),
+                new CustomerAdded(
+                        CustomerId.of("123"),
+                        new Name("andres"),
+                        new AmountMoney(600f)
+                )
+        );
     }
 
 }

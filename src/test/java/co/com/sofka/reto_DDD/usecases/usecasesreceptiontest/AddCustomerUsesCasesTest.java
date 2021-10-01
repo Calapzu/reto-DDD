@@ -1,14 +1,16 @@
-package co.com.sofka.reto_DDD.usecasesreceptiontest;
+package co.com.sofka.reto_DDD.usecases.usecasesreceptiontest;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.reto_DDD.domain.genericvalue.Name;
-import co.com.sofka.reto_DDD.domain.reception.command.AddPet;
-import co.com.sofka.reto_DDD.domain.reception.event.PetAdded;
+import co.com.sofka.reto_DDD.domain.reception.command.AddCustomer;
+import co.com.sofka.reto_DDD.domain.reception.event.CustomerAdded;
 import co.com.sofka.reto_DDD.domain.reception.event.ReceptionCreated;
-import co.com.sofka.reto_DDD.domain.reception.value.*;
+import co.com.sofka.reto_DDD.domain.reception.value.AmountMoney;
+import co.com.sofka.reto_DDD.domain.reception.value.CustomerId;
+import co.com.sofka.reto_DDD.domain.reception.value.ReceptionId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,36 +19,33 @@ import org.mockito.Mockito;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 
-class AddPetUsesCasesTest {
+class AddCustomerUsesCasesTest {
 
-    private AddPetUsesCases addPetUsesCases;
+    private AddCustomerUsesCases addCustomerUsesCases;
 
     @Mock
     private DomainEventRepository repository;
 
     @BeforeEach
     public void setup(){
-        addPetUsesCases = new AddPetUsesCases();
+        addCustomerUsesCases = new AddCustomerUsesCases();
         repository = mock(DomainEventRepository.class);
-        addPetUsesCases.addRepository(repository);
+        addCustomerUsesCases.addRepository(repository);
     }
 
     @Test
-    public void createPet(){
+    public void createCustomer(){
         //Arrange
-        var command = new AddPet(
+        var command = new AddCustomer(
                 ReceptionId.of("123456789"),
-                new PetId("123"),
-                new Name("Zeus"),
-                new PetBreed("Pitbull"),
-                new PetAge(2),
-                new PetWeight(10F),
-                new Diagnosis("El perro presenta diarrea")
+                new CustomerId("123"),
+                new Name("Jhoan"),
+                new AmountMoney(10000.50F)
         );
-        var useCase = new AddPetUsesCases();
+        var useCase = new AddCustomerUsesCases();
         Mockito.when(repository.getEventsBy("123456789")).thenReturn(events());
         useCase.addRepository(repository);
 
@@ -58,13 +57,11 @@ class AddPetUsesCasesTest {
                 .getDomainEvents();
 
         //assert
-        var eventPetAdded = (PetAdded) events.get(0);
-        Assertions.assertEquals("123", eventPetAdded.getEntityId().value());
-        Assertions.assertEquals("Zeus", eventPetAdded.getName().value());
-        Assertions.assertEquals("Pitbull", eventPetAdded.getPetBreed().value());
-        Assertions.assertEquals(2, eventPetAdded.getPetAge().value());
-        Assertions.assertEquals(10F, eventPetAdded.getPetWeight().value());
-        Assertions.assertEquals("El perro presenta diarrea", eventPetAdded.getDiagnosis().value());
+        var eventCustomerAdded = (CustomerAdded) events.get(0);
+        Assertions.assertEquals("Jhoan", eventCustomerAdded.getName().value());
+        Assertions.assertEquals("123", eventCustomerAdded.getCustomerId().value());
+        Assertions.assertEquals(10000.50F, eventCustomerAdded.getAmountMoney().value());
+
     }
 
     private List<DomainEvent> events(){

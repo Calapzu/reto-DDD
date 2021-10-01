@@ -1,10 +1,9 @@
-package co.com.sofka.reto_DDD.usecasesreceptiontest;
+package co.com.sofka.reto_DDD.usecases.usecasesreceptiontest;
 
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.reto_DDD.domain.reception.Reception;
-import co.com.sofka.reto_DDD.domain.reception.command.AddCustomer;
 import co.com.sofka.reto_DDD.domain.reception.command.AddPet;
 
 public class AddPetUsesCases extends UseCase<RequestCommand<AddPet>, ResponseEvents> {

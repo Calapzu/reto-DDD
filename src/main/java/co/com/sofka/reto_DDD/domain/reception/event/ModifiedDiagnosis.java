@@ -15,6 +15,8 @@ public class ModifiedDiagnosis extends DomainEvent {
         this.diagnosis = diagnosis;
     }
 
+
+
     public PetId getPetId() {
         return petId;
     }

@@ -1,4 +1,4 @@
-package co.com.sofka.reto_DDD.usecasesreceptiontest;
+package co.com.sofka.reto_DDD.usecases.usecasesreceptiontest;
 
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.support.RequestCommand;
@@ -8,8 +8,6 @@ import co.com.sofka.reto_DDD.domain.reception.event.ReceptionCreated;
 import co.com.sofka.reto_DDD.domain.reception.value.ReceptionId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CreateReceptionUsesCasesTest {
 
